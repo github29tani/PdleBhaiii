@@ -6,13 +6,10 @@ workflows:
       node: 18.13.0
       xcode: latest
       cocoapods: default
-      ndk: "25.1.8937393"
-      android_sdk:
-        - tools
-        - platform-tools
-        - build-tools-34.0.0
-        - android-34
-        - cmdline-tools-8.0
+      android:
+        - ndk: "25.1.8937393"
+        - build-tools: "34.0.0"
+        - platform: "android-34"
       vars:
         EXPO_TOKEN: $EXPO_TOKEN  # Set this in Codemagic UI
         PACKAGE_NAME: "com.pdlebhaii.app"
