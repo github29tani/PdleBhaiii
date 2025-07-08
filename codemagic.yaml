@@ -56,12 +56,26 @@ workflows:
           
           # Skip EAS config for local builds
           echo "EAS configuration complete. Proceeding with local build..."
+      - name: Install JavaScript Dependencies
+        script: |
+          cd pen
+          # Clean npm cache and reinstall dependencies
+          npm cache clean --force
+          rm -rf node_modules
+          npm install --legacy-peer-deps
+          
       - name: Build Android Debug
         script: |
           cd pen
-          npx expo prebuild --platform android --clean
+          # Generate Android project files
+          npx expo prebuild --platform android --clean --no-install
+          
+          # Fix potential permission issues
+          chmod +x android/gradlew
+          
+          # Build the Android app
           cd android
-          ./gradlew assembleDebug
+          ./gradlew clean assembleDebug --info
       - name: Build Android Release
         script: |
           cd pen
