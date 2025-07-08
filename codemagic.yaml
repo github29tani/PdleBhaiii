@@ -16,8 +16,8 @@ workflows:
           # Clear npm cache and install required global packages
           npm cache clean --force
           npm install -g expo-cli eas-cli
-          # Install project dependencies
-          yarn install --frozen-lockfile
+          # Install project dependencies with legacy peer deps
+          npm install --legacy-peer-deps
           # Install Expo dependencies
           npx expo install expo
       - name: Set up EAS
