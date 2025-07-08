@@ -13,15 +13,19 @@ workflows:
       - name: Install dependencies
         script: |
           cd pen
+          # Set CI environment variable
+          export CI=1
           # Clear npm cache and install required global packages
           npm cache clean --force
           npm install -g eas-cli
           # Install project dependencies
           npm install --legacy-peer-deps
-          # Login to Expo
-          npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD --non-interactive
+          # Set up Expo token
+          echo "//registry.npmjs.org/:_authToken=$EXPO_TOKEN" > .npmrc
+          # Install Expo CLI locally
+          npm install expo-cli --save-dev
           # Install Expo dependencies
-          npx expo install
+          npx expo install --check
       - name: Set up EAS
         script: |
           cd pen
