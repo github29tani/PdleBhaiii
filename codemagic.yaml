@@ -27,8 +27,8 @@ workflows:
           npm install --legacy-peer-deps
           # Install Expo CLI without peer dependency checks
           npm install --no-package-lock --legacy-peer-deps expo-cli --save-dev
-          # Install Expo dependencies with specific React version
-          npx expo install --check --legacy-peer-deps
+          # Install Expo dependencies
+          npx expo install --legacy-peer-deps
       - name: Set up EAS
         script: |
           cd pen
