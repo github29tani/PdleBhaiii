@@ -12,6 +12,7 @@
     "@react-native-picker/picker": "^2.11.0",
     "@react-navigation/material-top-tabs": "^7.3.2",
     "expo": "^53.0.17",
+    "expo-updates": "~0.28.16",
     "langchain": "^0.3.28",
     "metro": "^0.82.4",
     "node-docx": "^1.5.4",

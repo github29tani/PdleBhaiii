@@ -1,0 +1,57 @@
+workflows:
+  react-native-android:
+    name: React Native Android
+    max_build_duration: 120
+    environment:
+      node: 18.13.0
+      yarn: 1.22.19
+      android_sdk:
+        - "platform-tools"
+        - "build-tools;34.0.0"
+        - "platforms;android-34"
+        - "cmdline-tools;8.0"
+      ndk: "25.1.8937393"
+      env:
+        EXPO_TOKEN: $EXPO_TOKEN  # Set this in Codemagic UI
+        PACKAGE_NAME: "com.pdlebhaii.app"
+    scripts:
+      - name: Install dependencies
+        script: |
+          cd pen
+          yarn install --frozen-lockfile
+          npx expo install
+      - name: Set up EAS
+        script: |
+          cd pen
+          npx eas-cli@latest configure
+      - name: Build Android Debug
+        script: |
+          cd pen
+          npx expo prebuild --platform android --clean
+          cd android
+          ./gradlew assembleDebug
+      - name: Build Android Release
+        script: |
+          cd pen
+          npx expo prebuild --platform android --clean
+          cd android
+          ./gradlew assembleRelease
+    artifacts:
+      - pen/android/app/build/outputs/**/*.apk
+      - pen/android/app/build/outputs/**/*.aab
+      - pen/android/app/build/outputs/mapping/**/mapping.txt
+    publishing:
+      email:
+        recipients:
+          - tanisha5721k@gmail.com
+      scripts:
+        - name: Notify
+          script: |
+            echo "Build completed successfully!"
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
