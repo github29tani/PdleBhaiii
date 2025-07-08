@@ -32,12 +32,8 @@ workflows:
       - name: Set up EAS
         script: |
           cd pen
-          # Login to EAS
-          npx eas-cli@latest login --non-interactive --token $EXPO_TOKEN
-          
-          # Initialize EAS if not already initialized
+          # Create a basic eas.json if it doesn't exist
           if [ ! -f "eas.json" ]; then
-            # Create a basic eas.json if it doesn't exist
             echo '{
               "cli": {
                 "version": ">= 5.9.1"
@@ -45,7 +41,10 @@ workflows:
               "build": {
                 "development": {
                   "developmentClient": true,
-                  "distribution": "internal"
+                  "distribution": "internal",
+                  "android": {
+                    "gradleCommand": ":app:assembleDebug"
+                  }
                 },
                 "preview": {
                   "distribution": "internal"
@@ -55,8 +54,8 @@ workflows:
             }' > eas.json
           fi
           
-          # Update EAS project configuration
-          npx eas-cli@latest config
+          # Skip EAS config for local builds
+          echo "EAS configuration complete. Proceeding with local build..."
       - name: Build Android Debug
         script: |
           cd pen
