@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary/Brand colors (Bright Blue) -->
+    <color name="colorPrimary">#008ECC</color>  <!-- Bright Blue -->
+    <color name="colorPrimaryVariant">#4CB4E0</color>  <!-- Lighter Blue -->
+    <color name="colorOnPrimary">#FFFFFF</color>  <!-- White text on blue -->
+    
+    <!-- Secondary/Accent colors (Purple) -->
+    <color name="colorSecondary">#6C5CE7</color>  <!-- Purple -->
+    <color name="colorSecondaryVariant">#5D4EC9</color>  <!-- Darker Purple -->
+    <color name="colorOnSecondary">#FFFFFF</color>  <!-- White text on purple -->
+    
+    <!-- Background and Surface (Black) -->
+    <color name="colorBackground">#000000</color>  <!-- Black background -->
+    <color name="colorSurface">#121212</color>  <!-- Slightly lighter black for surfaces -->
+    <color name="colorOnSurface">#FFFFFF</color>  <!-- White text on black -->
+    
+    <!-- Error colors -->
+    <color name="colorError">#CF6679</color>  <!-- Error red -->
+    <color name="colorOnError">#000000</color>  <!-- Black text on error -->
+    
+    <!-- Common colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    
+    <!-- Accent color (Pale Turquoise) -->
+    <color name="colorAccent">#AFEEEE</color>
+    
+    <!-- Text colors -->
+    <color name="text_primary">#FFFFFF</color>  <!-- White for primary text -->
+    <color name="text_secondary">#B3B3B3</color>  <!-- Light gray for secondary text -->
+    
+    <!-- Divider color -->
+    <color name="divider">#1E1E1E</color>
+    
+    <!-- Button states -->
+    <color name="button_pressed">#5D4EC9</color>  <!-- Darker purple for pressed state -->
+    <color name="button_disabled">#4A4A4A</color>  <!-- Gray for disabled state -->
+</resources>

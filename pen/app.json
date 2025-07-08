@@ -1,0 +1,84 @@
+{
+  "expo": {
+    "sdkVersion": "53.0.0",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "name": "PdleBhaii",
+    "slug": "pdlebhaii",
+    "version": "1.0.1",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "pdlebhaii",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pdlebhaii.app",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "Allow PdleBhaii to access your photos to upload profile pictures and share images.",
+        "NSCameraUsageDescription": "Allow PdleBhaii to access your camera to take photos for your profile.",
+        "NSUserTrackingUsageDescription": "This identifier will be used to deliver personalized ads to you."
+      }
+    },
+    "android": {
+      "package": "com.pdlebhaii.app",
+      "versionCode": 2,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#000000"
+      },
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
+      "enableDexingArtifactTransform": false,
+      "softwareKeyboardLayoutMode": "pan",
+      "useNextNotificationsApi": true,
+      "googleServicesFile": "./google-services.json"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow PdleBhaii to access your photos.",
+          "cameraPermission": "Allow PdleBhaii to access your camera."
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 34,
+            "targetSdkVersion": 34,
+            "buildToolsVersion": "33.0.0",
+            "enableProguardInReleaseBuilds": true,
+            "enableShrinkResources": true,
+            "enableR8": true,
+            "extraMavenRepos": [
+              "https://maven.google.com"
+            ]
+          },
+          "ios": {
+            "deploymentTarget": "13.0"
+          }
+        }
+      ]
+    ],
+
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {}
+    }
+  }
+}

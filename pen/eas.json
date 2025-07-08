@@ -1,0 +1,67 @@
+{
+  "cli": {
+    "version": ">= 5.9.1",
+    "appVersionSource": "remote",
+    "promptToConfigurePushNotifications": false
+  },
+  "build": {
+    "optimized-apk": {
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease",
+        "env": {
+          "ORG_GRADLE_PROJECT_enableProguardInReleaseBuilds": "true",
+          "ORG_GRADLE_PROJECT_enableSeparateBuildPerCPUArchitecture": "true",
+          "ANDROID_ENABLE_RUNTIME_LOGGING": "false"
+        },
+        "image": "latest"
+      }
+    },
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "android": {
+        "gradleCommand": ":app:assembleDebug",
+        "buildType": "apk"
+      }
+    },
+    "preview": {
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease",
+        "withoutCredentials": true,
+        "env": {
+          "ORG_GRADLE_PROJECT_enableProguardInReleaseBuilds": "true",
+          "ORG_GRADLE_PROJECT_enableSeparateBuildPerCPUArchitecture": "true",
+          "ANDROID_ENABLE_RUNTIME_LOGGING": "false"
+        }
+      }
+    },
+    "production": {
+      "android": {
+        "buildType": "app-bundle",
+        "env": {
+          "ORG_GRADLE_PROJECT_enableProguardInReleaseBuilds": "true",
+          "ORG_GRADLE_PROJECT_enableSeparateBuildPerCPUArchitecture": "true",
+          "ANDROID_ENABLE_RUNTIME_LOGGING": "false"
+        }
+      }
+    },
+    "androidapk": {
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease",
+        "image": "ubuntu-22.04-jdk-17-ndk-r25b",
+        "env": {
+          "ORG_GRADLE_PROJECT_enableProguardInReleaseBuilds": "true",
+          "ORG_GRADLE_PROJECT_enableSeparateBuildPerCPUArchitecture": "true",
+          "ANDROID_ENABLE_RUNTIME_LOGGING": "false",
+          "NPM_CONFIG_LEGACY_PEER_DEPS": "true"
+        }
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

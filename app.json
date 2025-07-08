@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "9cd7a5e9-da55-47cf-b3dd-2f559b785b8a"
+      }
+    },
+    "android": {
+      "package": "com.saazz.pdlebhaii"
+    },
+    "slug": "pdlebhaii"
+  }
+}
