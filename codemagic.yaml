@@ -3,7 +3,7 @@ workflows:
     name: React Native Android
     max_build_duration: 120
     environment:
-      node: 18.13.0
+      node: 18.18.0
       xcode: latest
       cocoapods: default
       vars:
@@ -13,8 +13,13 @@ workflows:
       - name: Install dependencies
         script: |
           cd pen
+          # Clear npm cache and install required global packages
+          npm cache clean --force
+          npm install -g expo-cli eas-cli
+          # Install project dependencies
           yarn install --frozen-lockfile
-          npx expo install
+          # Install Expo dependencies
+          npx expo install expo
       - name: Set up EAS
         script: |
           cd pen
