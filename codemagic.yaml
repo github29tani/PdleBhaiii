@@ -32,7 +32,12 @@ workflows:
       - name: Set up EAS
         script: |
           cd pen
-          npx eas-cli@latest configure
+          # Initialize EAS if not already initialized
+          if [ ! -f "eas.json" ]; then
+            npx eas-cli@latest init
+          fi
+          # Configure EAS with the project
+          npx eas-cli@latest build:configure
       - name: Build Android Debug
         script: |
           cd pen
