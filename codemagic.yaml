@@ -15,17 +15,20 @@ workflows:
           cd pen
           # Set CI environment variable
           export CI=1
-          # Clear npm cache and install required global packages
+          # Clear npm cache
           npm cache clean --force
+          # Install global tools
           npm install -g eas-cli
-          # Install project dependencies
+          # Create .npmrc with auth token if EXPO_TOKEN is set
+          if [ -n "$EXPO_TOKEN" ]; then
+            echo "//registry.npmjs.org/:_authToken=$EXPO_TOKEN" > .npmrc
+          fi
+          # Install dependencies with specific React version
           npm install --legacy-peer-deps
-          # Set up Expo token
-          echo "//registry.npmjs.org/:_authToken=$EXPO_TOKEN" > .npmrc
-          # Install Expo CLI locally
-          npm install expo-cli --save-dev
-          # Install Expo dependencies
-          npx expo install --check
+          # Install Expo CLI without peer dependency checks
+          npm install --no-package-lock --legacy-peer-deps expo-cli --save-dev
+          # Install Expo dependencies with specific React version
+          npx expo install --check --legacy-peer-deps
       - name: Set up EAS
         script: |
           cd pen
