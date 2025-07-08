@@ -4,14 +4,18 @@ workflows:
     max_build_duration: 120
     environment:
       node: 18.13.0
-      android:
-        - build-tools;34.0.0
-        - platforms;android-34
-        - cmdline-tools;8.0
-        - ndk;25.1.8937393
-    env_vars:
-      - EXPO_TOKEN=$EXPO_TOKEN  # Set this in Codemagic UI
-      - PACKAGE_NAME="com.pdlebhaii.app"
+      xcode: latest
+      cocoapods: default
+      ndk: "25.1.8937393"
+      android_sdk:
+        - tools
+        - platform-tools
+        - build-tools-34.0.0
+        - android-34
+        - cmdline-tools-8.0
+      vars:
+        EXPO_TOKEN: $EXPO_TOKEN  # Set this in Codemagic UI
+        PACKAGE_NAME: "com.pdlebhaii.app"
     scripts:
       - name: Install dependencies
         script: |
