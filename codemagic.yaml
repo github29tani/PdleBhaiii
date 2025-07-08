@@ -4,16 +4,14 @@ workflows:
     max_build_duration: 120
     environment:
       node: 18.13.0
-      yarn: 1.22.19
-      android_sdk:
-        - "platform-tools"
-        - "build-tools;34.0.0"
-        - "platforms;android-34"
-        - "cmdline-tools;8.0"
-      ndk: "25.1.8937393"
-      env:
-        EXPO_TOKEN: $EXPO_TOKEN  # Set this in Codemagic UI
-        PACKAGE_NAME: "com.pdlebhaii.app"
+      android:
+        - build-tools;34.0.0
+        - platforms;android-34
+        - cmdline-tools;8.0
+        - ndk;25.1.8937393
+    env_vars:
+      - EXPO_TOKEN=$EXPO_TOKEN  # Set this in Codemagic UI
+      - PACKAGE_NAME="com.pdlebhaii.app"
     scripts:
       - name: Install dependencies
         script: |
