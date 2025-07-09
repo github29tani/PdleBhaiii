@@ -16,7 +16,7 @@ apply plugin: "expo-root-project"
 apply plugin: "com.facebook.react.rootproject"
 
 ext {
-    ndkVersion = "25.1.8937393"
+    ndkVersion = "26.1.10909125"
 }
 
 def reactNativeAndroidDir = new File(
