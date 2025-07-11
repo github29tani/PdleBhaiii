@@ -1,20 +1,19 @@
 import React, { useEffect } from 'react';
 import { Platform, View } from 'react-native';
 import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
 import { ErrorBoundary } from './error-boundary';
-import { colors } from '@/constants/colors';
+import { colors } from '../constants/colors';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider } from '../context/AuthContext';
-import { useAuthStore } from '@/store/auth-store';
-import { supabase } from '@/lib/supabase';
+import { useAuthStore } from '../store/auth-store';
+import { supabase } from '../lib/supabase';
+import CustomSplash from '../components/CustomSplash';
+import * as SplashScreen from 'expo-splash-screen';
+import type { Database } from '../types/database.types';
 
 export const unstable_settings = {
   initialRouteName: "(tabs)/index",
 };
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const { initialize, isAuthenticated, user, setUnreadNotificationCount } = useAuthStore();
@@ -73,7 +72,7 @@ export default function RootLayout() {
           },
           loadUnreadCount
         )
-        .subscribe((status, err) => {
+        .subscribe((status: string, err: any) => {
           if (status === 'CHANNEL_ERROR') {
             console.error('Notification channel error:', err);
           }
@@ -96,9 +95,9 @@ export default function RootLayout() {
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
-          <View style={{ flex: 1 }}>
+          <CustomSplash>
             <RootLayoutNav />
-          </View>
+          </CustomSplash>
         </AuthProvider>
       </QueryClientProvider>
     </ErrorBoundary>

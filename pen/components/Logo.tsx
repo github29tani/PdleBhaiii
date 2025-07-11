@@ -18,23 +18,27 @@ const Logo: React.FC<LogoProps> = ({
 
   useEffect(() => {
     const loadImage = async () => {
-      if (imagePath) {
-        try {
-          const { data } = supabase.storage
-            .from('logo')
-            .getPublicUrl(imagePath);
-          
-          if (data?.publicUrl) {
-            setImageUrl(data.publicUrl);
-          }
-        } catch (error) {
-          console.error('Error loading logo:', error);
+      try {
+        // Use the direct URL for the app icon (fixed URL)
+        const url = 'https://sulznkznjuhxbjpmjviv.supabase.co/storage/v1/object/public/logo/app-icon.png';
+        
+        // Verify the image exists
+        console.log('Loading app icon from URL:', url);
+        const response = await fetch(url);
+        if (response.ok) {
+          console.log('App icon loaded successfully');
+          setImageUrl(url);
+        } else {
+          console.warn('Logo image not found at URL:', url);
+          // Fallback to a placeholder or local asset if needed
         }
+      } catch (error) {
+        console.error('Error loading logo:', error);
       }
     };
 
     loadImage();
-  }, [imagePath]);
+  }, []);
 
   if (!imageUrl) {
     return (
