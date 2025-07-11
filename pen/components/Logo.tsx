@@ -43,16 +43,17 @@ const Logo: React.FC<LogoProps> = ({
   }
 
   return (
-    <View style={[styles.container, { width: size }, style]}>
+    <View style={[styles.container, { width: size, height: size, borderRadius: size / 2, overflow: 'hidden' }, style]}>
       <Image
         source={{ uri: imageUrl }}
         style={{
           width: '100%',
-          height: '100%',
-          resizeMode: 'contain',
+          height: '120%',
+          resizeMode: 'cover',
+          marginTop: '-10%',
         }}
         transition={300}
-        contentFit="contain"
+        contentFit="cover"
       />
     </View>
   );
@@ -60,9 +61,10 @@ const Logo: React.FC<LogoProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    aspectRatio: 1, 
+    aspectRatio: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#f0f0f0',
   },
   placeholder: {
     backgroundColor: '#f0f0f0',

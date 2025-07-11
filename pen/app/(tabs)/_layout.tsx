@@ -367,14 +367,14 @@ export default function TabLayout() {
             </View>
           ),
         }}
-        listeners={{
-          tabPress: (e: any) => {
+        listeners={({ navigation }) => ({
+          tabPress: (e) => {
             if (!isAuthenticated) {
               e.preventDefault();
-              e.nativeEvent.navigation.navigate('/(auth)/login');
+              navigation.navigate('(auth)/login');
             }
           },
-        }}
+        })}
       />
       <Tabs.Screen
         name="upload"
